@@ -49,24 +49,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-5"
           >
-            {/* AlgoForge Logo */}
-            {/* <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-8"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative bg-gradient-to-br from-purple-600 to-cyan-600 px-3 py-2 rounded-lg flex items-center justify-center">
-                  <FaBrain className="text-white text-2xl" />
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">AlgoForge</span>
-                <span className="text-xs text-purple-300/70 font-mono tracking-wider">CODE MASTERY PLATFORM</span>
-              </div>
-            </motion.div> */}
+            
 
             {/* Animated badge */}
             <motion.div

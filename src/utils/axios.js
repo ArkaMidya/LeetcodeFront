@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const baseURL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+  import.meta.env.VITE_API_BASE_URL || "https://leetcodebackend-ghpo.onrender.com";
 
 const axiosMain = axios.create({
   baseURL,

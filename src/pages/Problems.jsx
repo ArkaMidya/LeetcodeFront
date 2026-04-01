@@ -5,44 +5,14 @@ import ProblemsTable from '../components/ProblemTable';
 import axiosMain from "../utils/axios"
 import { useSelector,useDispatch } from "react-redux"
 import { problemSlice,getAllProblem } from '../Slice';
-// Dummy Data
-// const INITIAL_PROBLEMS = [
-//   { id: 1, title: "Two Sum", difficulty: "Easy", tags: ["Array", "Hash Table"], isSolved: true },
-//   { id: 2, title: "Longest Substring Without Repeating Characters", difficulty: "Medium", tags: ["String", "Sliding Window"], isSolved: false },
-//   { id: 3, title: "Median of Two Sorted Arrays", difficulty: "Hard", tags: ["Array", "Binary Search"], isSolved: false },
-//   { id: 4, title: "Reverse Integer", difficulty: "Easy", tags: ["Math"], isSolved: true },
-//   { id: 5, title: "Container With Most Water", difficulty: "Medium", tags: ["Array", "Two Pointers"], isSolved: true },
-//   { id: 6, title: "Merge k Sorted Lists", difficulty: "Hard", tags: ["Linked List", "Heap"], isSolved: false },
-//   { id: 7, title: "Climbing Stairs", difficulty: "Easy", tags: ["DP"], isSolved: true },
-//   { id: 8, title: "Word Search", difficulty: "Medium", tags: ["Backtracking", "Matrix"], isSolved: false },
-//   { id: 9, title: "Binary Tree Level Order Traversal", difficulty: "Medium", tags: ["Tree", "BFS"], isSolved: true },
-//   { id: 10, title: "Trapping Rain Water", difficulty: "Hard", tags: ["Stack", "Array"], isSolved: false },
-//   { id: 11, title: "Valid Parentheses", difficulty: "Easy", tags: ["Stack", "String"], isSolved: true },
-//   { id: 12, title: "Search in Rotated Sorted Array", difficulty: "Medium", tags: ["Array", "Binary Search"], isSolved: false },
-//   { id: 13, title: "Rotate Image", difficulty: "Medium", tags: ["Array", "Matrix"], isSolved: false },
-//   { id: 14, title: "Group Anagrams", difficulty: "Medium", tags: ["Hash Table", "String"], isSolved: true },
-//   { id: 15, title: "Maximum Subarray", difficulty: "Medium", tags: ["Array", "DP"], isSolved: true },
-//   { id: 16, title: "N-Queens", difficulty: "Hard", tags: ["Backtracking"], isSolved: false },
-//   { id: 17, title: "Jump Game", difficulty: "Medium", tags: ["Greedy", "Array"], isSolved: false },
-//   { id: 18, title: "Merge Intervals", difficulty: "Medium", tags: ["Array", "Sorting"], isSolved: true },
-//   { id: 19, title: "Unique Paths", difficulty: "Medium", tags: ["DP"], isSolved: false },
-//   { id: 20, title: "Edit Distance", difficulty: "Hard", tags: ["String", "DP"], isSolved: false },
-// ];
+
 const Problems = () => {
 
     const [filterStatus, setFilterStatus] = useState("All"); // All, Solved
     const [filterDifficulty, setFilterDifficulty] = useState("All");
     const [selectedTag, setSelectedTag] = useState("All");
     const [solveProblem, setSolveProblem] = useState([]);
-    // const getAllProblem = async () => {
-    //     try {
-    //         const response = await axiosMain.get("problem/getAllproblem");
-    //         setINITIAL_PROBLEMS(response.data);
-    //         console.log(response.data);
-    //     } catch (err) {
-    //         console.log(err.message);
-    //     }
-    // }
+   
     const {problems=[]}=useSelector((state)=>state.problem);
     const dispatch=useDispatch();
     const getsolvedProblem = async () => {
