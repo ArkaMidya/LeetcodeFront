@@ -91,35 +91,49 @@ const ProblemDetailPage = () => {
 
   const runCode = async () => {
     if (!editorRef.current) return;
-    setRunLoading(true);
-    const code = editorRef.current.getValue();
-    const runReq = {
-      code: code,
-      language: selectedLang
+    try {
+      setRunLoading(true);
+      const code = editorRef.current.getValue();
+      const runReq = {
+        code: code,
+        language: selectedLang
+      }
+      const result = await axiosMain.post(`submission/run/${id}`, runReq);
+      // console.log(result.data);
+      setResultTest(result.data);
+    } catch (error) {
+      const errorMessage = error?.response?.data?.message || error?.response?.data || "Unable to run code right now. Please try again.";
+      if (error?.response?.status === 429) {
+        alert(errorMessage);
+      }
+    } finally {
+      setRunLoading(false);
     }
-    const result = await axiosMain.post(`submission/run/${id}`, runReq);
-    setRunLoading(false);
-    // console.log(result.data);
-    setResultTest(result.data);
   };
   const handleTest = (i) => {
     setActiveTest(i);
   }
   const submitCode = async () => {
     if (!editorRef.current) return;
-    setLoading(true);
-    runCode();
-    const code = editorRef.current.getValue();
-    const runReq = {
-      code: code,
-      language: selectedLang
+    try {
+      setLoading(true);
+      runCode();
+      const code = editorRef.current.getValue();
+      const runReq = {
+        code: code,
+        language: selectedLang
+      }
+      setActiveNav('result');
+      setActiveTab('result');
+      const result = await axiosMain.post(`submission/submit/${id}`, runReq);
+      // console.log(result);
+      setSubmissionResult(result.data);
+    } catch (error) {
+      const errorMessage = error?.response?.data?.message || error?.response?.data || "Unable to submit code right now. Please try again.";
+      alert(errorMessage);
+    } finally {
+      setLoading(false);
     }
-    setActiveNav('result');
-    setActiveTab('result');
-    const result = await axiosMain.post(`submission/submit/${id}`, runReq);
-    // console.log(result);
-    setLoading(false);
-    setSubmissionResult(result.data);
   };
 
   useEffect(() => {
